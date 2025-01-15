@@ -1,0 +1,34 @@
+services:
+  # Сервіс NGINX
+  nginx:
+    image: arm64v8/nginx:alpine
+    container_name: "nginx"
+    volumes:
+      - ./www:/usr/share/nginx/html:ro # Підключаємо директорію зі статичними файлами
+    ports:
+      - "8181:80" # Порт для доступу до NGINX
+    restart: always
+    networks:
+      - internal
+
+  # Сервіс Vue.js для автоматичної збірки
+  vue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+#      platform: linux/arm64 # Вказуємо архітектуру
+    container_name: "vue"
+    volumes:
+      - ./src:/app/src # Підключаємо вихідні файли Vue.js
+      - ./public:/app/public # Папка з публічними файлами
+      - ./www:/app/dist # Згенеровані файли збірки потрапляють у www
+      - /app/node_modules # Уникнення перезапису node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Дозволяємо hot-reload
+    command: npm run build --watch # Автоматичне спостереження за файлами
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge

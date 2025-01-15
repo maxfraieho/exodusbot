@@ -1,0 +1,15 @@
+services:
+  bot:
+    build: .
+    container_name: telegram_bot
+    # Відкриваємо порт 8000, щоб можна було звернутися до бота ззовні
+    ports:
+      - "8000:8000"
+    # Якщо використовуєте .env-файл для налаштувань, вкажіть його
+    env_file:
+      - .env
+    # Монтуємо локальну теку ./data у /app/data, щоб мати доступ до SQLite
+    volumes:
+      - ./data:/app/data
+    # Налаштування перезапуску (за потреби):
+    restart: always

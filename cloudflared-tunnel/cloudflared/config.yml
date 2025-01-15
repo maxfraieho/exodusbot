@@ -1,0 +1,17 @@
+tunnel: 7c2d896d-2c77-4486-af56-ef30969ca942
+credentials-file: /etc/cloudflared/7c2d896d-2c77-4486-af56-ef30969ca942.json
+
+ingress:
+  - hostname: portainer.exodus.pp.ua
+    service: http://192.168.1.234:9000
+
+  - hostname: dangerboys.exodus.pp.ua
+    service: http://192.168.1.234:8181
+    
+  - hostname: kofajoh.exodus.pp.ua
+    service: http://192.168.1.234:8000
+    
+  - hostname: ssh.exodus.pp.ua
+    service: ssh://192.168.1.234:22
+
+  - service: http_status:404

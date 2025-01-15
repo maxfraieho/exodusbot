@@ -1,0 +1,8 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    container_name: cloudflared
+    volumes:
+      - ./cloudflared:/etc/cloudflared
+    command: tunnel run exodus-tunnel

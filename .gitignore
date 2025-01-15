@@ -1,10 +1,13 @@
 # Виключити все за замовчуванням
 *
 
-# Не виключати специфічні папки
+# Включити специфічні папки та їхній вміст
 !botvfadangerboys/
+!botvfadangerboys/**
 !cloudflared-tunnel/
+!cloudflared-tunnel/**
 !dangerboys/
+!dangerboys/**
 
-# Не виключати спеціальні файли у корені
+# Не виключати сам .gitignore
 !.gitignore
