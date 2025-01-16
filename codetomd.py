@@ -22,6 +22,9 @@ def main():
     # Перетворюємо список ігнорованих каталогів у множину для швидкого пошуку
     IGNORE_DIRS = set(default_ignore_dirs)
 
+    # Явно ігноруємо файли, які не хочемо включати
+    SKIP_FILES = {"codetomd.sh", "codetomd.py"}
+    
     # Визначаємо, які розширення файлів включати
     ALLOWED_EXTENSIONS = {'.py', '.js', '.ts', '.vue', '.html', '.css', '.json', '.md'}
 
@@ -39,6 +42,10 @@ def main():
             
             # Обробляємо файли
             for file_name in files:
+                # Пропускаємо файли, які явно ігноруємо
+                if file_name in SKIP_FILES:
+                    continue
+
                 # Витягаємо розширення
                 _, extension = os.path.splitext(file_name)
                 
