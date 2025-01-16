@@ -10,7 +10,7 @@ def main():
     output_file = input("Вкажіть ім'я вихідного файлу (за замовчуванням project_code.md): ") or "project_code.md"
     
     # Каталоги, які завжди ігноруємо
-    default_ignore_dirs = ['.git', 'node_modules', 'dist', '__pycache__']
+    default_ignore_dirs = ['.git', 'node_modules', 'venv', 'dist', '__pycache__']
     print("\nЗа замовчуванням ігноруємо такі каталоги:")
     print("  " + ", ".join(default_ignore_dirs))
     
