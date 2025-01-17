@@ -23,7 +23,7 @@ def main():
     IGNORE_DIRS = set(default_ignore_dirs)
 
     # Явно ігноруємо файли, які не хочемо включати
-    SKIP_FILES = {"codetomd.sh", "codetomd.py"}
+    SKIP_FILES = {"codetomd.sh", "codetomd.py", "package-lock.json"}
     
     # Визначаємо, які розширення файлів включати
     ALLOWED_EXTENSIONS = {'.py', '.js', '.ts', '.vue', '.html', '.css', '.json', '.md'}
